@@ -14,11 +14,11 @@ export default {
     host: 'localhost',
     port: 3306,
     charset: 'utf8mb4',
-    username: '',
-    password: '',
+    username: 'root',
+    password: '123456',
     database: 'sinodrill',
     synchronize: false,
-    entities: [path.join(__dirname, '../entity/**/*.entity{.ts,.js}')],
+    entities: [path.join(__dirname, '../entity/**/*{.ts,.js}')],
     logging: 'all', // query, error, schema, warn, info, log, all
     logger: 'simple-console',
     maxQueryExecutionTime: 500, // 单位毫秒
@@ -49,7 +49,7 @@ export default {
     mDomain,
     allowOrigins: [],
     port: 50504,
-    apiPrefix: '/api/v1',
+    apiPrefix: 'api',
     passSalt: 'GGLwJ8VWmk',
     tokenName: 'token',
     tokenSecret: '@ecHw-a6t040FnoDh2uXk9hQ',

@@ -11,10 +11,6 @@ export default async function bootstrap(app, listening: boolean = true) {
 
   myLoggerService.info({
     message: 'Starting my nest project...',
-    data: {
-      NODE_ENV: process.env.NODE_ENV,
-      port: configService.server.port,
-    },
   });
 
   app.useGlobalFilters(new globalExceptionFilter(configService, myLoggerService));
@@ -25,6 +21,11 @@ export default async function bootstrap(app, listening: boolean = true) {
     await app.listen(configService.server.port);
     myLoggerService.info({
       message: 'My nest project started !',
+      data: {
+        NODE_ENV: process.env.NOD_ENV,
+        port: configService.server.port,
+        apiPrefix: configService.server.apiPrefix,
+      },
     });
   }
 }
