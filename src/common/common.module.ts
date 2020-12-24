@@ -5,13 +5,11 @@ import { Image } from '../entity/image';
 import { CommonController } from './common.controller';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Image]),
-  ],
-  controllers: [CommonController],
-  providers: [MyLoggerService],
-  exports: [MyLoggerService],
+    imports: [
+        TypeOrmModule.forFeature([Image]),
+    ],
+    controllers: [CommonController],
+    providers: [MyLoggerService],
+    exports: [MyLoggerService],
 })
-export class CommonModule {
-
-}
+export class CommonModule {}

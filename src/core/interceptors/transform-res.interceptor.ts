@@ -13,7 +13,8 @@ export class TransformResInterceptor<T> implements NestInterceptor {
         private readonly logger: MyLoggerService,
     ) {}
 
-    intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
+    intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> {
+        this.logger.info({ 'message': '进入interceptor' });
         return next.handle().pipe(map(async (data) => {
             const req = context.switchToHttp().getRequest<MyRequest>();
             const reqEndTime = Date.now();
@@ -21,7 +22,7 @@ export class TransformResInterceptor<T> implements NestInterceptor {
             this.logger.info({
                 data: {
                     req: {
-                        method: 'GET',
+                        method: req.method,
                         url: req.originalUrl,
                         headers: {
                             'user-agent': req.headers['user-agent'],
@@ -65,5 +66,4 @@ export class TransformResInterceptor<T> implements NestInterceptor {
             };
         }));
     }
-
 }

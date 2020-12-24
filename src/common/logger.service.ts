@@ -11,7 +11,7 @@ class LogData {
 export class MyLoggerService {
   private writeLog(logMethod: string, logData: LogData) {
     logData = logData || { message: '', data: {} };
-    (logData as any).localTime = moment().format('yyyy-MM-dd HH:mm:ss:SSS');
+    (logData as any).localTime = moment().format('YYYY-MM-DD HH:mm:ss:SSS');
     logger[logMethod](logData);
   }
 

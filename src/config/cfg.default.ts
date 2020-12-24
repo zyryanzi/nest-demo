@@ -1,8 +1,9 @@
 import * as path from 'path';
 
+const apiPrefix = 'api'
 const domain = 'localhost';
 const port = 3000;
-const url = `https://${domain}`;
+const url = `http://${domain}`;
 const mDomain = 'm-sinodrill.com';
 const mUrl = `https://${mDomain}`;
 
@@ -43,13 +44,13 @@ export default {
     siteName: 'Sinodrill',
     companyName: '北京中钻科技协会',
     icp: '京ICP备12345678号',
-    url: 'https://www.sinodrill.org/api/',
+    url,
     mUrl,
-    domain: 'sinodrill.org',
+    domain,
     mDomain,
     allowOrigins: [],
-    port: 50504,
-    apiPrefix: 'api',
+    port,
+    apiPrefix,
     passSalt: 'GGLwJ8VWmk',
     tokenName: 'token',
     tokenSecret: '@ecHw-a6t040FnoDh2uXk9hQ',
@@ -57,7 +58,7 @@ export default {
     cookieSecret: 'lZhgxV!@c@IUmV7i',
     rateLimitWindowMs: 15 * 60 * 1000, // 时间窗口，单位毫秒
     rateLimitMax: 1000, // limit each IP to rateLimitMax requests per windowMs
-    swaggerPrefix: 'api/v1',
+    swaggerPrefix: 'api/v1/',
     xiaoceEmail: 'zyryanzi@163.com',
   },
 };
