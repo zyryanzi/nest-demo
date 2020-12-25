@@ -1,8 +1,9 @@
 import * as requestIp from 'request-ip';
-import { NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware } from '@nestjs/common';
 import { MyLoggerService } from '../../common/logger.service';
 import { MyRequest } from '../type/net';
 
+@Injectable()
 export class IpMiddleware implements NestMiddleware {
     constructor(private readonly logger: MyLoggerService) {}
 
@@ -10,7 +11,7 @@ export class IpMiddleware implements NestMiddleware {
         const req: MyRequest = request as any;
         req.reqStartTime = Date.now();
 
-        const clientIp = requestIp.getClient(request as any);
+        const clientIp = requestIp.getClientIp(request as any);
         (request as any).clientIp = clientIp;
 
         this.logger.info({
@@ -26,6 +27,6 @@ export class IpMiddleware implements NestMiddleware {
                 },
             },
         });
+        next();
     }
-
 }

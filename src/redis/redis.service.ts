@@ -2,7 +2,7 @@ import * as Redis from 'ioredis';
 import * as util from 'util';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '../config/config.service';
-import { User } from '../entity/user';
+import { UserEntity } from '../entity/user.entity';
 
 class CacheKeys {
   readonly user: string = 'user:%d';
@@ -27,7 +27,7 @@ export class RedisService {
     return user;
   }
 
-  async setUser(user: User) {
+  async setUser(user: UserEntity) {
     const cacheKey = util.format(this.cacheKeys.user, user.id);
     return await this.client.set(cacheKey, user, 'EX', 1 * 60 * 60);
   }

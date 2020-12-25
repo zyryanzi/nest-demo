@@ -23,7 +23,7 @@ export class globalExceptionFilter implements ExceptionFilter {
                 message: 'Invalide CSRF token !',
             });
             return;
-        } else if (exception.getStatus()) {
+        } else if (exception.getStatus) {
             //HttpException
             const httpException: HttpException = exception as HttpException;
             if (httpException.message && typeof exception.code !== 'undefined') {

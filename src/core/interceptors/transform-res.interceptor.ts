@@ -14,7 +14,6 @@ export class TransformResInterceptor<T> implements NestInterceptor {
     ) {}
 
     intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> {
-        this.logger.info({ 'message': '进入interceptor' });
         return next.handle().pipe(map(async (data) => {
             const req = context.switchToHttp().getRequest<MyRequest>();
             const reqEndTime = Date.now();

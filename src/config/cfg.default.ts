@@ -19,7 +19,7 @@ export default {
     password: '123456',
     database: 'sinodrill',
     synchronize: false,
-    entities: [path.join(__dirname, '../entity/**/*{.ts,.js}')],
+    entities: [path.join(__dirname, '../entity/**/*.entity{.ts,.js}')],
     logging: 'all', // query, error, schema, warn, info, log, all
     logger: 'simple-console',
     maxQueryExecutionTime: 500, // 单位毫秒
