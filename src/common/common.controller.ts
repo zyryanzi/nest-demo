@@ -7,7 +7,6 @@ export class CommonController {
 
   @Get('test')
   getHello(): string {
-    console.log('--- ? ---');
     return 'hello, nest!';
   }
 }

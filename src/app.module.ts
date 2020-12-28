@@ -7,6 +7,14 @@ import { RedisModule } from './redis/redis.module';
 import { AppController } from './app.controller';
 import { CatController } from './controller/cat.controller';
 import { IpMiddleware } from './core/middlewares/ip.middleware';
+import { CompressionMiddleware } from './core/middlewares/compression.middleware';
+import { CookieParserMiddleware } from './core/middlewares/cookie-parser.middleware';
+import { CorsMiddleware } from './core/middlewares/cors.middleware';
+import { CsrfMiddleware } from './core/middlewares/csrf.middleware';
+import { RateLimitMiddleware } from './core/middlewares/rate-limit.middleware';
+import { HelmetMiddleware } from './core/middlewares/helmet.middleware';
+import { UserMiddleware } from './core/middlewares/user.middleware';
+import { UserModule } from './user/user.module';
 
 @Module({
     imports: [
@@ -26,6 +34,7 @@ import { IpMiddleware } from './core/middlewares/ip.middleware';
             inject: [ConfigService],
         }),
         CommonModule,
+        UserModule,
     ],
     // controllers: [AppController, CatController],
     // providers: [AppService, CatService, HttpService],
@@ -37,6 +46,13 @@ export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer): any {
         const middlewares = [
             IpMiddleware,
+            CookieParserMiddleware,
+            RateLimitMiddleware,
+            CorsMiddleware,
+            CsrfMiddleware,
+            HelmetMiddleware,
+            UserMiddleware,
+            CompressionMiddleware,
         ];
         consumer
             .apply(...middlewares)
