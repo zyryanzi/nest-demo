@@ -36,7 +36,7 @@ export class Follower {
 }
 
 @Entity({name: 'user'})
-export class UserEntity {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
