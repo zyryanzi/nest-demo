@@ -1,0 +1,75 @@
+{% extends '../layout/default.njk' %}
+
+{% block main %}
+<div class="category-nav-box">
+    <div class="category-nav">
+        <ul class="category-list">
+            <li><a class="category-item {% if categoryPathName == 'recommended' %}category-item-select{% endif %}" href="/">推荐</a></li>
+            {% for category in categories %}
+            <li><a class="category-item {% if categoryPathName == category.pathname %}category-item-select{% endif %}" href="/timeline/{{category.pathname}}">{{category.name}}</a></li>
+            {% endfor %}
+            {% if user %}
+            <li style="float: right;margin-right: 0;"><a class="category-item" href="/tags">标签管理</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="index-container">
+        <div class="content-box">
+            <div class="list-header">
+                <ul class="content-list-sort">
+                    <li><a href="?sort=newest" class="{% if sort == 'newest' %}active{% endif %}">最新</a></li>
+                    <li><a href="?sort=popular" class="{% if sort == 'popular' or not sort %}active{% endif %}">热门</a></li>
+                    <li><a href="?sort=noreply" class="{% if sort == 'noreply' %}active{% endif %}">等待回复</a></li>
+                </ul>
+            </div>
+            <div id="articleBox">
+                {% include '../component/article/articles.njk' %}
+            </div>
+
+            <div style="background: #fff;">
+                <div id="articleList"></div>
+            </div>
+
+        </div>
+        <div class="home-sidebar">
+            <div class="recommended-books">
+                <div class="title">
+                    <span>开源图书</span>
+                </div>
+                <ul>
+                    {% for book in recommendedBooks %}
+                    <li class="book-item">
+                        <a href="/books/{{book.id}}" target="_blank">
+                            <img class="book-item-img" src="{{book.coverURL}}">
+                            <div class="book-item-info">
+                                <div class="book-item-title">{{book.name}}</div>
+                                <div>
+                                    <span class="book-item-buycount">{{book.studyUserCount}}人已学习</span>
+                                    <span class="try-read">阅读</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% include '../component/user/recommendusers.njk' %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block pageData %}
+<script>
+    var categoryPathName = '{{categoryPathName}}';
+    var sort = '{% if sort %}{{sort}}{% else %}{% endif %}';
+</script>
+{% endblock %}
+
+{% block devjs %}
+    {{ loadjs('entry/index.js') }}
+{% endblock %}

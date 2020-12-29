@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>中资网 - 分享你的知识、经验和见解</title>
+
+    {% block keyword %}
+    <meta name="keyword" content="sino,sinodrill,sinorex,sinotech,中色,资源,环境,技术,社区">
+    {% endblock %}
+
+    <meta name="description" content="中资网 - 一个专业的地勘资源技术社区，帮助你寻找答案，分享知识。">
+    {# 直接加载第三方库的css时，放在libcss块中 #}
+    {% block libcss %}
+    {% endblock %}
+
+    {# webpack打包样式后，放在css块中 #}
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body {% if env === 'development' %} style="display: none;"{% endif %}>
+    {% if env !== 'production' %}
+    <script>
+        setTimeout(function () {
+            if (!window.defaultJSLoaded) {
+                alert('没有加载default.js');
+            }
+        }, 5000);
+    </script>
+    {% endif %}
+
+    {% from '../macros/js.njk' import loadjs  %}
+
+    {% block header %}
+        {% include '../component/header.njk' %}
+    {% endblock %}
+
+    {% block main %}
+    {% endblock %}
+
+    {% block sidetool %}
+        {% include '../component/sidetool.njk' %}
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+
+    <script>
+        {# dump 在一个对象上调用JSON.stringify，并将结果输出到模板上 #}
+        var globalConfig = {{ globalConfig | dump | safe }};
+        var user = {{ user | dump | safe }};
+    </script>
+
+    {% block pageData %}
+    {% endblock %}
+
+    {# 直接加载第三方库的js时，放在libjs块中 #}
+    {% block libjs %}
+        {% if env === 'production' %}
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?253a8e53710b29ed40e6e57965279933";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        {% endif %}
+    {% endblock %}
+
+    {# 本地开发时，具体页面中的js #}
+    {% block devjs %}
+    {% endblock %}
+
+    {# webpack打包js后，放在js块中 #}
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

@@ -17,7 +17,6 @@ export class UserConstants {
 export class EncryptConstants {
     static readonly MD5: any = 'md5';
     static readonly BASE64: any = 'base64';
-    static readonly BASIC_ARR: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 }
 
 export class ScaleConstans {
@@ -27,4 +26,9 @@ export class ScaleConstans {
 
 export class EncodeConstans {
     static readonly UTF8: any = 'utf-8';
+}
+
+export class CodeConstants {
+    static readonly BASIC_ARR: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+    static readonly BASIC_NUM_ARR: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 }
