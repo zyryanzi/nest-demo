@@ -1,4 +1,4 @@
-# sinodrill-pc
+# pc
 
 ## Project setup
 ```

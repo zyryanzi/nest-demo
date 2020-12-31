@@ -23,6 +23,7 @@ export default {
         logging: 'all', // query, error, schema, warn, info, log, all
         logger: 'simple-console',
         maxQueryExecutionTime: 500, // 单位毫秒
+        autoSchemaSync: true,
     },
     redis: {
         host: 'localhost',
