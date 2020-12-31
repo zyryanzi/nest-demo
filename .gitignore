@@ -36,3 +36,4 @@ yarn-error.log
 build/config\.gypi
 
 
+node_modules
