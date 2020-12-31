@@ -1,5 +1,6 @@
 # dependencies
 node_modules/
+pc/node_modules/
 
 # IDE
 /.idea
@@ -34,4 +35,4 @@ yarn-error.log
 /benchmarks/memory
 build/config\.gypi
 
-/pc/node_modules/
+
