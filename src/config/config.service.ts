@@ -7,6 +7,7 @@ import DBConfig from './type/DBConfig';
 import RedisConfig from './type/RedisConfig';
 import StaticConfig from './type/StaticConfig';
 import ServerConfig from './type/ServerConfig';
+import { GeetestConfig } from './type/GeetestConfig';
 
 export class ConfigService {
     readonly DEV = 'dev';
@@ -19,6 +20,7 @@ export class ConfigService {
     readonly redis: RedisConfig;
     readonly static: StaticConfig;
     readonly server: ServerConfig;
+    readonly geetest: GeetestConfig
 
     constructor() {
         const envConfigMap = {
@@ -40,5 +42,6 @@ export class ConfigService {
         this.redis = new RedisConfig(defaultJSON.redis);
         this.static = new StaticConfig(defaultJSON.static);
         this.server = new ServerConfig(defaultJSON.server);
+        this.geetest = new GeetestConfig(defaultJSON.geetest);
     }
 }

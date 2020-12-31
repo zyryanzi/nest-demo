@@ -1,0 +1,24 @@
+{% extends '../../layout/admin.njk' %}
+
+{% block libcss %}
+{% endblock %}
+
+{% block main %}
+<div id="app"></div>
+{% endblock %}
+
+{% block pageData %}
+<script>
+    var adminPageURL = '{{ adminPageURL }}';
+    {# 当前登录用户 #}
+    var user = {{user | dump | safe}};
+</script>
+{% endblock %}
+
+{% block libjs %}
+  {{ super() }}
+{% endblock %}
+
+{% block devjs %}
+    {{ loadjs('entry/admin/app.js') }}
+{% endblock %}
