@@ -4,8 +4,6 @@ import { ConfigModule } from './config/config.module';
 import { CommonModule } from './common/common.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisModule } from './redis/redis.module';
-import { AppController } from './app.controller';
-import { CatController } from './controller/cat.controller';
 import { IpMiddleware } from './core/middlewares/ip.middleware';
 import { CompressionMiddleware } from './core/middlewares/compression.middleware';
 import { CookieParserMiddleware } from './core/middlewares/cookie-parser.middleware';
@@ -15,6 +13,7 @@ import { RateLimitMiddleware } from './core/middlewares/rate-limit.middleware';
 import { HelmetMiddleware } from './core/middlewares/helmet.middleware';
 import { UserMiddleware } from './core/middlewares/user.middleware';
 import { UserModule } from './user/user.module';
+import { CmsModule } from './cms/cms.module';
 
 @Module({
     imports: [
@@ -35,6 +34,7 @@ import { UserModule } from './user/user.module';
         }),
         CommonModule,
         UserModule,
+        CmsModule,
     ],
     // controllers: [AppController, CatController],
     // providers: [AppService, CatService, HttpService],

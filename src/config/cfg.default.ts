@@ -1,11 +1,11 @@
 import * as path from 'path';
 
 const apiPrefix = 'api';
-const domain = 'localhost';
-const port = 3000;
+const domain = 'dev.sinodrill.com';
+const port = 50504;
 const url = `http://${domain}`;
-const mDomain = 'm-sinodrill.com';
-const mUrl = `https://${mDomain}`;
+const mDomain = 'dev.m-sinodrill.com';
+const mUrl = `http://${mDomain}`;
 
 const staticUrl = url;
 
@@ -27,12 +27,15 @@ export default {
     },
     redis: {
         host: 'localhost',
-        port: '6379',
         keyPrefix: 'sinodrill',
+        family: 4, // 4 (IPv4) or 6 (IPv6)
+        port: '6379',
+        password: '',
+        db: 0
     },
     static: {
         staticUrl: staticUrl,
-        jsPath: `${staticUrl}/js`,
+        jsPath: `${staticUrl}/src`,
         cssPath: `${staticUrl}/styles`,
         imgPath: `${staticUrl}/images`,
         fontPath: `${staticUrl}/fonts`,

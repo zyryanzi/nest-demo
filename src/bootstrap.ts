@@ -15,7 +15,7 @@ export default async function bootstrap(app, listening: boolean = true) {
         message: 'Starting my nest project...',
     });
 
-    app.setGlobalPrefix(configService.server.apiPrefix);
+    // app.setGlobalPrefix(configService.server.apiPrefix);
 
     app.useGlobalPipes(new ValidateDtoPipe(configService));
     app.useGlobalInterceptors(new TransformResInterceptor(configService, myLoggerService));
