@@ -24,17 +24,12 @@ export class ValidateDtoPipe implements PipeTransform<any> {
             return object;
         }
 
-        let message;
-        let errorCode;
-        this.assignErrCode(errors, errorCode, message);
-
-        throw new MyHttpException({
-            errorCode: errorCode || ErrorCode.ParamsError.CODE,
-            message,
-        });
+        this.assignErrCode(errors);
     }
 
-    private assignErrCode(errors, errorCode, message) {
+    private assignErrCode(errors) {
+        let errorCode;
+        let message;
         if (errors[0].constraints) {
             for (const key of Object.keys(errors[0].constraints)) {
                 message = errors[0].constraints[key];
@@ -46,8 +41,12 @@ export class ValidateDtoPipe implements PipeTransform<any> {
             }
         } else {
             const children = errors[0].children;
-            this.assignErrCode(children, errorCode, message);
+            this.assignErrCode(children);
         }
+        throw new MyHttpException({
+            errorCode: errorCode || ErrorCode.ParamsError.CODE,
+            message,
+        });
     }
 
     private toValidate(metatype): boolean {
