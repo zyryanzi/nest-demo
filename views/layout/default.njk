@@ -21,8 +21,8 @@
     {% endblock %}
 </head>
 
-<body {% if env === 'development' %} style="display: none;"{% endif %}>
-    {% if env !== 'production' %}
+<body {% if env === 'dev' %} style="display: none;"{% endif %}>
+    {% if env !== 'prod' %}
     <script>
         setTimeout(function () {
             if (!window.defaultJSLoaded) {
@@ -59,7 +59,7 @@
 
     {# 直接加载第三方库的js时，放在libjs块中 #}
     {% block libjs %}
-        {% if env === 'production' %}
+        {% if env === 'prod' %}
         <script>
             var _hmt = _hmt || [];
             (function() {
